@@ -1,12 +1,15 @@
 package com.hzsolution;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ScheduledServiceImpl implements ScheduledService {
+    private static final Logger logger = LoggerFactory.getLogger(ScheduledServiceImpl.class);
 
     @Override
     public void processData() {
-        System.out.println("dummy run");
+        logger.info("dummy run");
     }
 }
