@@ -1,0 +1,51 @@
+server:
+   port:8081
+
+# general logging properties for spring logging
+logging:
+   level:
+      org.springframework.web: INFO
+      org.springframework.jdbc.datasource.init.ScriptUtils: DUBUG
+      com.hzsolution: DEBUG
+      org.hibernate: ERROR
+# logging.file=logs/spring-boot-logging.log
+
+spring:
+   profiles:
+      active: dev
+
+---
+
+spring:
+   profiles: dev
+   schedulerEnable: true
+   scheduledRate: 60000
+   datasource:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/southern-parts?autoReconnect=true&useSSL=false
+      username: user
+      password: admin@2019
+      continue-on-error: true
+      initialize: true
+      initialization-mode: always
+#      schema: classpath:schema-all.sql
+#      data: classpath:data-all.sql
+#      schema: classpath:schema-customer.sql, classpath:schema-employee.sql
+#      data: classpath:data-customer.sql, classpath:data-employee.sql
+
+---
+
+spring:
+   profiles: test
+   schedulerEnable: false
+   scheduledRate: 60000
+   datasource:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/bookorder?autoReconnect=true&useSSL=false
+      username: user
+      password: admin@2019
+      continue-on-error: true
+      initialize: true
+      initialization-mode: always
+#      schema: classpath:schema-all.sql
+#      data: classpath:data-all.sql
