@@ -1,4 +1,4 @@
-package com.hzsolution;
+package com.hzsolution.scheduler;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,7 +31,7 @@ public class Scheduler {
     }
 
     @Scheduled(fixedRateString = "${spring.scheduledRate}")
-    private void runScheduledTask() {
+    public void runScheduledTask() {
         if(scheduleEnabled) {
             logger.info("start runScheduledTask at fixed rate for every " + scheduledRate/60000 + " minute(s)");
             scheduledService.processData();
